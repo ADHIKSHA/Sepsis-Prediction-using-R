@@ -12,7 +12,7 @@ Functionalities:-
 3. Integration with PHP scripts of the data.
 
 Run the PHP server (Xampp server)
-Open the php file. calling.php
+Open the php file. show.php
 And this will run the file and give the output. To change the output vary the data in testing.csv file.
 
 The fina output can be found in final_output.csv file.
