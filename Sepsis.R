@@ -27,7 +27,7 @@ library(mice)
 md.pattern(dataset)
 imputed_Data <- mice(dataset, m=1, maxit = 1, method = 'pmm',seed='500')
 dataset <- complete(imputed_Data,1)
-write.csv(dataset,"compiled_data.csv")
+#write.csv(dataset,"compiled_data.csv")
 
 library(caTools)
 set.seed(123)
@@ -146,14 +146,17 @@ print("By far the best model with highest accuracy is XGBoost" )
 find_result<- function(){
   training_set=read.csv("compiled_data.csv")
   print(training_set)
-  training_set=training_set[,2:43]
+  training_set=training_set[,2:41]
   test_set=read.csv("compiled_data2.csv")
   test_set<- test_set[1:1000,]
   print(test_set)
-  classifier_xgb=xgboost(data=as.matrix(training_set[,-42]),label=training_set$SepsisLabel,nrounds=300)
-  y_pred=predict(classifier_xgb,newdata=as.matrix(test_set[,-42]))
+  classifier_xgb=xgboost(data=as.matrix(training_set[,-41]),label=training_set$SepsisLabel,nrounds=300)
+  y_pred=predict(classifier_xgb,newdata=as.matrix(test_set[,-41]))
+  
+  y_pred0 = (y_pred <=0.3)
+  y_pred1=(y_pred>=0.7)
   final_pred<- ifelse(y_pred<0.5,0,1)
-  final_table=table(final_pred,test_set[,42])
+  final_table=table(final_pred,test_set[,41])
   total_correct_predicts=final_table[1,1]+final_table[2,2]
   accuracy=total_correct_predicts/nrow(test_set)
   write.csv(final_pred,"final_output.csv")
