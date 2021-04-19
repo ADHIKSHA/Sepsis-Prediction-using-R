@@ -13,10 +13,12 @@ This R script uses XGboost for early and easier prediction of sepsis. Also integ
 3. Integration with PHP scripts of the data.
 
 ## Usage
--> Run the PHP server (Xampp server)
--> Open the php file > **show.php**
--> And this will run the file and give the output. Add your data in **testing.csv** file to check the output.
--> The final output can be found in **final_output.csv** file.
+```
+> Run the PHP server (Xampp server)
+> Open the php file > **show.php**
+> And this will run the file and give the output. Add your data in **testing.csv** file to check the output.
+> The final output can be found in **final_output.csv** file.
+```
 
 ## Disclaimer
 If you just want to see how the models have been selected and more visulalization , you can open the Sepsis.R file and run the code to get proper model and dataset information. Without using the PHP frontend.
